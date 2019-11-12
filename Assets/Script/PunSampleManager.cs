@@ -51,8 +51,7 @@ public class PunSampleManager : Photon.MonoBehaviour
 
     public void SendCustomMessage(string message) {
         if (PhotonNetwork.connected) {
-            byte messageID = System.Convert.ToByte(1);
-            PhotonNetwork.networkingPeer.OpRaiseEvent(OperationCode.RaiseEvent, message, true, RaiseEventOptions.Default);
+            PhotonNetwork.networkingPeer.OpRaiseEvent(OperationCode.CustomEvent, message, true, RaiseEventOptions.Default);
         }
     }
     #endregion
@@ -84,7 +83,7 @@ public class PunSampleManager : Photon.MonoBehaviour
     {
         Debug.Log("OnJoinedRoom() called by PUN. Now this client is in a room. From here on, your game would be running. For reference, all callbacks are listed in enum: PhotonNetworkingMessage");
 
-        SendCustomMessage("Hello world");
+        SendCustomMessage("");
     }
     #endregion
 }

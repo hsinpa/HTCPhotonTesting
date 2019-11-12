@@ -1514,6 +1514,8 @@ using ExitGames.Client.Photon;
         /// <summary>(253) Raise event (in a room, for other actors/players)</summary>
         public const byte RaiseEvent = (byte)253;
 
+        public const byte CustomEvent = (byte)132;
+
         /// <summary>(252) Set Properties (of room or actor/player)</summary>
         public const byte SetProperties = (byte)252;
 
