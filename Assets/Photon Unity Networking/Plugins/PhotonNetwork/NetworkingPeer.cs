@@ -2029,13 +2029,6 @@ internal class NetworkingPeer : LoadBalancingPeer, IPhotonPeerListener
                 break;
             }
 
-
-            case OperationCode.CustomEvent:
-                // this usually doesn't give us a result. only if the caching is affected the server will send one.
-                SendMonoMessage(PhotonNetworkingMessage.OnRaiseEvent, operationResponse.ToStringFull());
-            break;
-
-
             case OperationCode.RaiseEvent:
                 // this usually doesn't give us a result. only if the caching is affected the server will send one.
                 break;
@@ -2752,7 +2745,13 @@ internal class NetworkingPeer : LoadBalancingPeer, IPhotonPeerListener
             }
             break;
 
-        default:
+        case PunEvent.CustomEvent:
+            // this usually doesn't give us a result. only if the caching is affected the server will send one.
+            Debug.Log(photonEvent.ToStringFull());
+            SendMonoMessage(PhotonNetworkingMessage.OnRaiseEvent, photonEvent.CustomData.ToString());
+        break;
+
+            default:
             if (photonEvent.Code < 200)
             {
                 if (!PhotonNetwork.CallEvent(photonEvent.Code, photonEvent [ParameterCode.Data], actorNr))

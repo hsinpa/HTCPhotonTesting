@@ -51,7 +51,8 @@ public class PunSampleManager : Photon.MonoBehaviour
 
     public void SendCustomMessage(string message) {
         if (PhotonNetwork.connected) {
-            PhotonNetwork.networkingPeer.OpRaiseEvent(OperationCode.CustomEvent, message, true, RaiseEventOptions.Default);
+            //PunEvent.CustomEvent;
+            PhotonNetwork.networkingPeer.OpRaiseEvent(PunEvent.CustomEvent, message, true, RaiseEventOptions.Default);
         }
     }
     #endregion
