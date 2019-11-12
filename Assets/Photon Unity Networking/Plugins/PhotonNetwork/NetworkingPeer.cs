@@ -2031,6 +2031,7 @@ internal class NetworkingPeer : LoadBalancingPeer, IPhotonPeerListener
 
             case OperationCode.RaiseEvent:
                 // this usually doesn't give us a result. only if the caching is affected the server will send one.
+                SendMonoMessage(PhotonNetworkingMessage.OnRaiseEvent, operationResponse.ToStringFull());
                 break;
 
             case OperationCode.FindFriends:

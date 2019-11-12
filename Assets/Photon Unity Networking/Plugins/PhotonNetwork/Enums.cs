@@ -446,6 +446,7 @@ public enum PhotonNetworkingMessage
 	/// </remarks>
 	/// <example>void OnOwnershipTransfered(object[] viewAndPlayers) {} //</example>
 	OnOwnershipTransfered,
+    OnRaiseEvent,
 }
 
 
