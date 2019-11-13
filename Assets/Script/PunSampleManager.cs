@@ -64,6 +64,7 @@ public class PunSampleManager : Photon.MonoBehaviour
     #region PUN Callback Event
     public void OnRaiseEvent(string message) {
         Debug.Log("OnRaiseEvent : " + message);
+        punUI.OnMsgReceive(message);
     }
 
     public virtual void OnConnectedToMaster()
@@ -83,6 +84,9 @@ public class PunSampleManager : Photon.MonoBehaviour
     public void OnJoinedRoom()
     {
         Debug.Log("OnJoinedRoom() called by PUN. Now this client is in a room. From here on, your game would be running. For reference, all callbacks are listed in enum: PhotonNetworkingMessage");
+
+        punUI.DisplayCanvas(punUI.RoomSetting, false);
+        punUI.DisplayCanvas(punUI.ChatSetting, true);
 
         SendCustomMessage("");
     }
