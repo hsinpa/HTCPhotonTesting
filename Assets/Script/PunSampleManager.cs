@@ -11,6 +11,10 @@ public class PunSampleManager : Photon.MonoBehaviour
     [SerializeField]
     private int Version = 1;
 
+    [SerializeField]
+    private GameObject PlayerPrefab;
+
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -47,7 +51,11 @@ public class PunSampleManager : Photon.MonoBehaviour
 
     public void LeaveRoom()
     {
+        SwitchVoice(false);
         PhotonNetwork.LeaveRoom();
+
+        punUI.DisplayCanvas(punUI.RoomSetting, true);
+        punUI.DisplayCanvas(punUI.ChatSetting, false);
     }
 
     public void SendCustomMessage(string message) {
@@ -59,7 +67,15 @@ public class PunSampleManager : Photon.MonoBehaviour
     #endregion
 
     #region Voice
-
+    public void SwitchVoice(bool p_enable) {
+        if (p_enable)
+        {
+            PhotonVoiceNetwork.Connect();
+        }
+        else {
+            PhotonVoiceNetwork.Disconnect();
+        }
+    }
     #endregion
 
     #region PUN Callback Event
@@ -90,6 +106,22 @@ public class PunSampleManager : Photon.MonoBehaviour
         punUI.DisplayCanvas(punUI.ChatSetting, true);
 
         SendCustomMessage(Application.identifier + " has joined room ");
+        CreatePlayerAvatar();
     }
+
+    private void CreatePlayerAvatar() {
+        var o = PhotonNetwork.Instantiate(PlayerPrefab.name, Vector3.zero, Quaternion.identity, 0);
+    }
+
+    //public  void OnPhotonPlayerConnected(PhotonPlayer newPlayer)
+    //{
+
+    //}
+
+    //public  void OnPhotonPlayerDisconnected(PhotonPlayer otherPlayer)
+    //{
+
+    //}
+
     #endregion
 }

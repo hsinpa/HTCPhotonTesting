@@ -68,15 +68,9 @@ public class PunSampleUI : MonoBehaviour
             msgInputfield.text = "";
         });
 
-        leaveBt.onClick.AddListener(() => {
+        leaveBt.onClick.AddListener(OnLeaveEvent);
 
-        });
-
-        voiceToggle.onValueChanged.AddListener((bool p_enable) => {
-
-            Debug.Log("VoiceToggle " + p_enable);
-
-        });
+        voiceToggle.onValueChanged.AddListener(OnVoiceToggle);
 
         DisplayFullMsg();
     }
@@ -98,11 +92,13 @@ public class PunSampleUI : MonoBehaviour
 
     private void OnMsgSubmit(string msg) {
         pun.SendCustomMessage(msg);
+
+        OnMsgReceive("Me : " + msg);
     }
 
     public void OnMsgReceive(string msg)
     {
-        if (MessageArray.Count > MessageRow)
+        if (MessageArray.Count >= MessageRow)
             MessageArray.RemoveAt(0);
 
         MessageArray.Add(msg);
@@ -119,11 +115,11 @@ public class PunSampleUI : MonoBehaviour
     }
 
     private void OnVoiceToggle(bool p_enable) {
-
+        pun.SwitchVoice(p_enable);
     }
 
-    private void OnLeaveEvent() { 
-        
+    private void OnLeaveEvent() {
+        pun.LeaveRoom();
     }
 
     #endregion
@@ -132,6 +128,8 @@ public class PunSampleUI : MonoBehaviour
         canvas.interactable = isDisplay;
         canvas.blocksRaycasts = isDisplay;
         canvas.alpha = (isDisplay) ? 1 : 0;
+
+        voiceToggle.isOn = false;
     }
 
 }

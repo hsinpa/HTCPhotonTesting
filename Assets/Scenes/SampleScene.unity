@@ -1857,7 +1857,7 @@ MonoBehaviour:
   leaveBt: {fileID: 712726728}
   msgInputfield: {fileID: 459397386}
   voiceToggle: {fileID: 720146276}
-  MessageRow: 1
+  MessageRow: 5
 --- !u!1 &1127013428
 GameObject:
   m_ObjectHideFlags: 0
@@ -2923,7 +2923,7 @@ MonoBehaviour:
   VoiceDetection: 1
   VoiceDetectionThreshold: 0.01
   PlayDelayMs: 200
-  MicrophoneType: 0
+  MicrophoneType: 1
   DebugLostPercent: 0
   DebugInfo: 0
   Encrypt: 0
