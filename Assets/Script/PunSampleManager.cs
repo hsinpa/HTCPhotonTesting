@@ -15,6 +15,7 @@ public class PunSampleManager : Photon.MonoBehaviour
     public void Start()
     {
         punUI.DisplayCanvas(punUI.RoomSetting, false);
+        punUI.DisplayCanvas(punUI.ChatSetting, false);
 
         PhotonNetwork.ConnectUsingSettings(Version + "." + SceneManagerHelper.ActiveSceneBuildIndex);
     }
@@ -88,7 +89,7 @@ public class PunSampleManager : Photon.MonoBehaviour
         punUI.DisplayCanvas(punUI.RoomSetting, false);
         punUI.DisplayCanvas(punUI.ChatSetting, true);
 
-        SendCustomMessage("");
+        SendCustomMessage(Application.identifier + " has joined room ");
     }
     #endregion
 }
