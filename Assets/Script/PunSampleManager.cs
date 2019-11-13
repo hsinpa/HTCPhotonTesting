@@ -111,6 +111,8 @@ public class PunSampleManager : Photon.MonoBehaviour
 
     private void CreatePlayerAvatar() {
         var o = PhotonNetwork.Instantiate(PlayerPrefab.name, Vector3.zero, Quaternion.identity, 0);
+        PhotonVoiceRecorder recorder = o.GetComponent<PhotonVoiceRecorder>();
+        recorder.enabled = true;
     }
 
     //public  void OnPhotonPlayerConnected(PhotonPlayer newPlayer)

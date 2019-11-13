@@ -2870,6 +2870,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   punUI: {fileID: 1096990683}
   Version: 0
+  PlayerPrefab: {fileID: 2127195377118448187, guid: 6d07a39f97def9947b06c1c19666bae5,
+    type: 3}
 --- !u!4 &1621305551
 Transform:
   m_ObjectHideFlags: 0
